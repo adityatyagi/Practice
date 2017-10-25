@@ -1,0 +1,490 @@
+Cookies:
+1. Google Chrome dosent support cookies on localhost files
+2. the browsers have a boolean property to check if it has cookie support: 
+    cookieEnabled property of navigator object
+    i.e. navigator.cookieEnabled
+
+3. Scope: Function arguments act as local variables that have been initialised before.
+var y = 10;
+function hello(z){
+    var x = 10;
+}
+
+y -> global
+x, z-> local
+
+4. Anything created at a script level is considered global.
+5. Local variables are preferred over global variables as they are tightly controlled.
+6. The switch/case cannot do everything that if/else are capable of. The case in switch/cases are data and not expressions.
+
+    switch(testData){
+        case Match-1:
+            statement1;
+            break;
+        
+        case Match-2:
+            statement1;
+            break;
+        
+        case Match-3:
+            statement1;
+            break;
+        
+        default:
+            statementDefault;
+    }
+
+    the testData must be data and not an expression that evaluates to true or false. 
+
+7. 2D Array
+    One dimension arrays -> colums
+    Two dimension arrays -> Rows, columns
+
+    var twoDArray = new Array(new Array(9), new Array(9), new Array(9), new Array(9));
+
+    this 2-D array has 4 rows (i.e 4 sub-arrays and 9 columns, i.e. 9 elements in each sub-array)
+
+8. Use "push" method of the Array object to add the elements at the last of the array
+9. a function is a black box for the code that calls it. It is interested in the output of the function only.
+10. Within the body of the function, the arguments are used as they have been initialised as local variables.
+    function helloThere(argument){
+        //body
+    }
+
+11. Although function arguments acts like local variables initialised, and if we change there value inside
+the function, it won't have an effect outside the  function.
+Here, if the objects are passed as arguments and their value is changed inside the function, it EFFECTS the objects
+outside the function.
+
+12. Functions eliminate or breaks down the redundunt code by GENERALIZING the tasks.
+
+13. Arguments: You can isolate the neccessary arguments by examining what pieces of information is different in the
+duplicate code.
+
+14. the return statement not only returns data but also ends the function immediately.
+15. The return value of a function replaces the function call and becomes part of the expression where the function was
+called.
+    function helloThere(){
+        return "Aditya"
+    }
+
+    if(helloThere() === "Aditya"){
+        console.log("It's a match!");
+    }
+
+16. the return statement can also be used to control the flow of the code as it ends the function along
+with returning the values.
+
+17. return can also be used to indicate the success or failure of a function.
+18. using the return; with no value,means bailing out of the function.
+19. A function can return only a single piece of data.
+20. Functions -> function name is the variable name and the body is the value. this is another way to look
+at the functions. the body is also called "function literal"
+
+function helloThere(name){
+    alert(name);
+}
+
+helloThere = function(name){
+    alert(name);
+}
+
+helloThere = function reference
+body = function literal
+
+21. Function References
+Here, i am mixing the html and the js part. This is not an efficient manner.
+<body onload = "initSeats();">
+</body
+
+to seperate the two, we use function references.
+
+Function references provides no means to pass arguments
+function literals are also called anonymous functions. they are ideal in situations where they are called
+only once.
+
+Callback Functions: They are important because they help you to react to the things that occur outside
+the code.
+
+Callback functions are called by the browser in response to the things that occur outside the code.
+
+22. every form field has a "form" object that can be passed along to any function that is called to 
+validate the form data.
+
+23. this.form["name"] is similar to the document.getElementById('id').
+we should work with the former part when we are dealing with the forms. 
+
+24. the "size" attribute in the form-field only restricts the physical size, though we can add as much as we want.
+FOr this not to happen we can use "maxlength" attribute of the form-field.
+there is no "minlength" attribute and hence we require the validation function.
+
+25. If a form control has a name or id of submit it will mask the form's submit method. 
+
+26. Regular Expressions are used to match patterns in text. A regular expression allows you to create a patterns and
+then apply it to a string of text, searching for a match.
+
+27. Regular Expressions
+Syntax: /Expression/
+Expressions = Metacharacters + Numbers + Strings 
+
+Commonly used:
+.    ==> Match any character other than a newline
+^    ==> The string must begin with the pattern
+$    ==> The  string must end with the pattern
+\s   ==> Match a whitespace (tabs, spaces, newlines and returns)
+\d   ==> Match any numeric digit
+\w   ==> Match any alphaneumeric character (alphabet + number)
+
+Metacharacters are symbols used to construct the RE
+
+Quantifiers: They control the number of times a sub-pattern appears in  a RE
+*
++
+?
+{n}
+
+e.g ZIP Code - #####-####
+RE = /^\d{5}-\d{4}$/    or    /\d\d\d\d\d-\d\d\d\d/ 
+
+RE is not a string. It is more like a description of a string.
+
+A regular expression in JS is expressed by a RegExp object that has the test() function.
+It is used to test a string for a RE pattern
+
+Quantifiers for minimum and maximum
+{min, max} : this Quantifier controls how many times a sub-pattern may appear as a min and max range.
+
+/^\w{5, 8}$/ --> this can be used in passwords as, this will allow minimum 5 characters and maximum of 8 chars.
+
+ALTERNATION METACHARACTER: works like a logical OR operator
+this | that  ==> this works with a single bar.
+
+CHARACTER CLASSES: Allows you to create tightly controlled sub-patterns within a patter. This is mainly used with the
+E-mail validation. There are a number of ways an email can be constructed and therefore we need good validation code.
+
+Character Classes excel at establishing the rules where optional characters play heavily into a sub-pattern.
+
+[CharacterClass]  -> CharacterClass is a SET of regular expression rules for matching a single character.
+
+e.g 
+/d[ui]g/  -> dug, dig : both are valid
+
+/\$\d[\d\.]*/   -> $5, $5.30, $23.45 : all are valid
+
+SPECIAL CHARACTERS in RE : they are to be escaped with a backslash \
+
+---------------------------------------------------------------------------------------------------------
+DOCUMENT OBJECT MODEL (DOM) with JS
+
+28. document.getElementById()
+29. document.getElementByTagName("div") -> gives an array of all the divs in the html document as they appear
+as it is an array, we iterate using the [] notation
+<img/>
+<img/>
+<img/>
+<img/>
+<img/>
+
+document.getElementByTagName("img")[3] 
+
+The DOM sees the webpage as a hierarchical tree of nodes. 
+DOM nodes are classified according to their node types : text, element, document, attribute
+NOTE: Attributes donot appear in the node tree of the DOM
+Though they are accessible using the DOM.
+
+Node Properties are handy in traversing through the nodes of the tree. The document is the top most node of the tree.
+Properties:
+1. nodeValue -> contains PURE TEXT only
+2. nodeType
+3. childNodes
+4. firstChild
+5. lastChild
+
+
+Alternative to the .innerHtml
+
+e.g
+<p id="story">
+    Hello, there.
+</p>
+
+document.getElementById("story").firstChild.nodeValue  ===> Hello, there.
+
+3 SAFE STEPS TO CHANGE THE NODE TEXT
+1. Remove all child node                                  ==> removeChild()
+2. Create a new text node based on the new content        ==> createTextNode()
+3. Append the newly created text node as the child node.  ==> appendChild()
+
+
+<p id="story">
+    Hello, <strong>there</strong>, I am aditya.
+</p>
+
+document.getElementById("story").firstChild.nodeValue = "This is fun";
+
+Result: This is fun <strong>there</strong>, I am aditya.
+
+
+
+
+
+Now, to change the node text completely, we follow the 3 STEPS
+
+var node = document.getElementById("story");
+while(node.firstChild){
+    node.removeChild(node.firstChild);
+}
+
+node.appendChild(document.createTextNode("This is fun. Thats it."));
+
+Try to make everything into functions so that everything is dynamic
+
+The DOM provides access to element's style class through the "className" property of the node object.
+The CSS class and JavaScript class are two different things.
+
+
+<style>
+.sample{
+    color: red;
+}
+.sample1{
+    color: blue;
+}
+.sample2{
+    color: green;
+}
+.sample3{
+    color: pink;
+}
+</style>
+
+<span id="hello" class="sample">Hi</span>
+alert(document.getElementById("hello").className)  ==> sample
+
+
+
+onmouseover and onmouseout
+
+<span id="hello" class="sample1" onmouseover="this.className"="sample2">Start</span>
+<span id="hello" class="sample1" onmouseout="this.className"="sample3">Start</span>
+
+
+Visibility of an element
+document.getElementById("id_sample").style.visibility = "visible";
+document.getElementById("id_sample").style.visibility = "hidden";
+
+here, we have used the "style" object and the "visibility" property of the style object.
+we can also use the "display" property of the style object. 
+display: none;
+display: block;
+
+Debug the DOM: decision history feature 
+
+
+CREATE ELEMENT IN HTML BODY
+Using JavaScript, we can create elements in html code on the fly.
+createElement() + createTextNode();
+element + text inside it  =  new element created 
+
+<div id="history">
+
+</div>
+
+decisionElement = createElement("p"); // paragraph element created with no text 
+
+decisionElement.appendChild(document.createTextNode("This is the sample text, and part of p"));
+
+document.getElementById("history").appendChild(decisionElement);
+
+<div id="history">
+    <p> This is the sample text, and part of p </p>
+</div>
+
+----------------------------------------------------------------------------------------------------------------
+
+JAVASCRIPT OBJECTS
+
+Data + Actions = objects
+
+Functions placed within an object can access the data without being passed to the functions.
+
+All the objects have data and this data is called Object Members.
+Object Members = variables => Properties
+                 functions => methods
+
+
+There are 2 types of datatypes. Primitive like string, number, boolean and complex data types like objects.
+Primitive data types are primitive because they represent a single type of information.
+
+JS built in objetcs = Date, Strings, Array
+
+The "this" keyword is key for creating the object property
+
+CREATING OBEJCTS USING FUNCTION CONSTRUCTORS 
+
+function Invitation(who, what, where, when){
+    this.who = who;
+    this.what = what;
+    this.when = when;
+    this.where = where;
+}
+
+var sampleInvite = new Invitation("Aditya", "party", "10/02/2017", "My House");
+
+Note: the "this" keyword distinguishes a object property from a normal variable. Without the "this"
+keyword, the function constructor wouldn't know that you are trying to build a obejct property.
+
+function Blog(date, body){
+    this.date = date;
+    this.body = body;
+}
+
+Creating the function constructor doesn't create the object. It is not physically present till we use the 
+new operator to create the object.
+
+var sampleBlog = new Blog("10/02/2017", "This is my first entry to the blog") 
+
+ORGANIZATIONAL OBJECTS don't act on properties. They are a collection of realted functions. e.g Math object
+
+Every JS object has a method toString();
+The toString() method provides a string representation of an object
+
+e.g.
+var sampleObject = new Date("02/12/2017");
+alert(sampleObject)
+
+this will give an alert with the string in it and not the object.
+JS knows that alert() is expecting a string and thus, toString() method runs behind the scenes.
+
+getMonth() - returns 0 to 11 i.e Jan to Dec
+getDate() - returns 1 to 31
+
+
+ARRAYS AS OBJECTS
+
+Arrays are objects and they have a lot of capabilites to present. Like .length, .sort() etc
+
+==================SORTING===================
+the .sort() method of the array object calls the comparsion function to do its work and compare the array
+elements. We canwrite our own custom comparsion function and pass it to the sort method. This way, the sort()
+will use our comparison function to sort.
+
+var sampleArr = [1,22,5,445,46,23,33,21,11,2,4];
+sampleArr.sort(); => increasing order
+
+function myCompare(x ,y){
+    return x-y;
+}
+
+
+x and y are the array elements that are being compared. if:
+ans < 0 => x is sorted ahead of y.
+ans = 0 => x and y remains as it is.
+ans > 0 => y is sorted ahead of x.
+
+sampleArr.sort(myCompare); => the array sort() is now controlled by custom compare function.
+
+
+
+==================SEARCHING===================
+A string is a searchable object.
+few methods of the string object that are used to search:
+.substring()
+.length
+.charAt()
+.indexOf() -> search the string to see if it contains a certain substring
+.toLowerCase()
+.toUpperCase()
+
+
+SEARCHING WITHIN STRINGS --> indexOf()
+
+GENERATING RANDOM Numbers
+Math.random() generates pseudorandom Numbers
+
+to generate random Numbers between  a range (say 0 to 5)
+Math.floor(Math.random()* 6);
+
+------------------------------------------------------------------------------------------------------------------
+                                    OBJECT ORIENTED JAVASCRIPT PROGRAMMING
+
+the methods built using "this" keyword inside the Blog constructor to make the objects, is not a good
+choice as this.methodName() makes a copy for every object being made.
+So if there are 6 blog entries, there are 6 copies of the 3 methods
+this.toHTML()
+this.toString()
+this.containsText()
+
+Unlike properties which needs to store unique values for each object, methods are to be shared amongst objects.
+the solution to this is Class and a Class Instance.
+
+Class: A class is a object description, a template of what a obejct is made up of.
+Instance: Instance is an actual object that has been created using a class.
+
+this.body and this.date are instance properties as they are owned by the instances. This is clear from "this"
+keyword.
+all the objects have their own copies of the properties and methods.
+
+the methods / functions are duplicated with every object creation beacuse of the "this" keyword.
+these are nothing but "instance methods".
+
+The CLASS-OWNED INSTANCE METHODS is owned by the class itself and every instance then shares the same copy of that
+method.
+
+PROTOTYPE : The prototype object allows you to set properties and methods at the class level.
+
+============== CLASS METHODS ====================
+Blog.prototype.toHTML = function(){
+    //body
+}  
+
+=============== CLASS PROPERTIES ================
+
+Blog.prototype.signature = "Aditya Tyagi";
+
+Accessing the class properties : alert(this.signature);
+Therefore, class properties are accessed similar to the instance properties
+
+================ EXTENDING BUILT-IN JS OBJECTS =================
+using the prototype, we can extend the functionalites of the built-in js objects like Date, Math, etc.
+
+---------------------------------------------------------------------------------------------------------------------
+
+========================== THE ERROR / DEBUGGING CHECKLIST ==============================
+Missing (), {}
+typo
+"", ''
+
+Unlike syntax errors, logical errors aren't displayed by the browsers in the error console.
+errors:
+logical
+syntax
+runtime
+
+SHADOW VARIABLES: A variable that accidently hides amother variable. As when a local variable hides a global variable.
+
+
+---------------------------------------------------------------------------------------------------------------------
+=========================== AJAX =================================
+AJAX: Asynchronous JavaScript and XML
+AJAX: It allows dynamic data loading from the server. 
+XML: It is a markup language that is used to format any-kind of data.
+XML + HTML = XHTML, it is a mordern version of HTML. 
+
+JavaScript has a built in object called XMLHttpRequest that is used to initiate the AJAX request and also handle the
+AJAX responses.
+
+Page 575 -> very important.
+
+There is a custom AjaxRequest Object that makes it easy to build the request and responses easily.
+
+
+
+
+
+
+
+
+
+
+

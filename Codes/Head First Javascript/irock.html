@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iRock</title>
+	<script type="text/javascript">
+		function sayHello(){
+			var name = prompt('What is your name?', 'Enter your name here');
+			if(name){
+				alert('Hello '+name);
+				document.getElementById("image").src = "smile.png";
+			}
+		}
+
+		function changeImage(){
+			setTimeout("sayHello()", 5000);
+		}
+
+		function resizeBlock(){
+			console.log(document.getElementById("image").height);
+			console.log(window.innerHeight);
+			document.getElementById("image").height = (window.innerHeight-100)*0.9; 
+			console.log(document.getElementById("image").height);
+		}
+	</script>
+</head>
+<body  onload="resizeBlock(); alert('The body is completely loaded!'); " onresize="resizeBlock();">
+	<div style="margin-top: 100px; text-align: center;">
+		<img id="image" src="nosmile.png" onclick="changeImage();">
+	</div>
+	
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+Date: 11/10/2017
+-> The contents of the pdf can be highlighted, so many things are in the pdf only.
+------------------------------------------------------------------------------------------------------------------------
+
+Chapter 1: A quick dip in javascript
+Outputing in JS:
+alert()
+conosle.log()
+document.write()
+Playing with the DOM
+

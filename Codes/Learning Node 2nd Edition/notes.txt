@@ -1,0 +1,92 @@
+======== UPDATING MODULES AND NODE ========
+1. Keep all modules upto date with the following command:
+    npm update -g
+    checking version : npm -v
+    installing npm globally: npm install npm -g n
+
+2. Update node:
+first check the version -> node -v
+Updating node to the latest version: 
+    apt-get update
+    apt-get upgrade --show-upgraded
+
+For now, know that the following are some of the ES6 features supported
+in Node, straight out of the can:
+• Classes
+• Promises
+• Symbols
+• Arrow functions
+• Generators
+• Collections
+• let
+• The spread operator
+
+To counter the problems
+that can occur, you’ll need to install NAN, or Native Abstractions for Node.js. This
+header file helps to smooth out the differences between versions of Node.js.
+
+
+===================Node Building Blocks: Global Objects, Events, and Node’s Asynchronous Nature=========================
+
+ArrayBuffer and typed arrays
+
+=== Process ===
+In a Node application, these channels provide communication between the Node application and the terminal. 
+They’re a way for you to communicate directly with the application.
+
+Node supports the channels with three process functions:
+• process.stdin: a readable stream for stdin
+• process.stdout: a writable stream for stdout
+• process.stderr: a writable stream for stderr
+
+
+=================== Basics of Node Modules and Node Package Manager (npm) =========================
+To create a default package.json file in the project directory, run the following
+command:
+npm init --yes
+
+The only safe way to execute an arbitrary chunk of JavaScript is in a separate process.
+However, if you’re comfortable with the source of the JavaScript but are interested in avoiding unintended and 
+accidental consequences, then you can isolate that script from your local environment with VM.
+
+================== Interactive Node with REPL and More on the Console ==============================
+Using a Logging Module
+You’re not limited to the built-in console object for logging. There
+are more sophisticated tools available, such as the Bunyan and
+Winston modules.
+
+There are a number of methods on the console object.
+console.log()
+console.info()
+console.error()
+console.warn()
+console.dir()
+
+To create a new instance of Console, we either need to import the Console class or
+access it via the global console object. Both of the following result in a new consolelike
+object:
+
+
+================================== Node and the Web ==================================================
+request is a readable stream.
+response is a writable stream.
+
+With node, in addition to the server that listens to the request, you can also make a client that makes a
+request.
+
+---------------Creating a Static Web File Server---------------
+
+When thinking of what’s necessary to build a simple but functional static file server,
+we might come up with the following set of steps:
+
+1. Create an HTTP server and listen for requests.
+2. When a request arrives, parse the request URL to determine the location for the
+file.
+3. Check to make sure the file exists.
+4. If the file doesn’t exist, respond accordingly.  
+5. If the file does exist, open the file for reading.
+6. Prepare a response header.
+7. Write the file to the response.
+8. Wait for the next request.
+
+========================== Node and the Local System ============================================

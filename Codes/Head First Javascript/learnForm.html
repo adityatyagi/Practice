@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learn Form</title>
+	<style type="text/css">
+		.fields{
+			padding: 10px;
+			max-width: 400px;
+		}
+		.in{
+			float: right;
+		}
+		.submit{
+			margin-left: 17.0em;
+		}
+	</style>
+	<script type="text/javascript">
+
+		function updateOrder(){
+		  const TAXRATE = 0.5;
+		  const DONUTPRICE = 15;
+		  var name = document.getElementById('name').value;
+		  
+		  var numCakeDonuts = parseDonuts(document.getElementById('cakeDonut').value);
+		  
+		  var numGazedDonuts = parseDonuts(document.getElementById('gazedDonut').value);
+		  
+		  
+		  // if a filed is left blank or value other than number is the input
+		  if(isNaN(numGazedDonuts)){
+		    numGazedDonuts = 0;
+		  }
+		  
+		  if(isNaN(numCakeDonuts)){
+		    numCakeDonuts = 0;
+		  }
+		  
+		  
+
+		  var subTotal = (numGazedDonuts + numCakeDonuts) * DONUTPRICE;
+		  var tax = subTotal * TAXRATE;
+		  var total = subTotal + tax;
+		  
+		  document.getElementById('subTotal').value = "Rs. "+ subTotal.toFixed(2);
+		  document.getElementById('tax').value = "Rs. "+ tax.toFixed(2);
+		  document.getElementById('total').value = "Rs. "+ total.toFixed(2);
+		  
+		};
+
+		function placeOrder(){
+			// validation code
+			if(document.getElementById("name").value == ""){
+				alert('Sorry, you have to put your name first.');
+			}
+			if(document.getElementById("time").value == ""){
+				alert('You have to put a time first.');
+			}
+		  form.submit();
+		};
+
+		// to get the "dozen" order
+		function parseDonuts(donutString){
+			numDonuts = parseInt(donutString);
+			// parseInt(NaN) = Nan
+			if(donutString.indexOf("dozen") != -1){
+				numDonuts *= 12
+			}
+			return numDonuts;
+		}
+
+
+		
+	</script>
+</head>
+<body>
+	<div id="content">
+		<form id="form" method="POST" name="orderForm">
+			<div class="fields">
+			Name: <input type="text" class="in" name="name" id="name" value=""><br>
+			</div>
+			<div class="fields">
+			Number of cake donuts: <input onchange="updateOrder()" class="in" type="text" name="cake" id="cakeDonut" value=""/><br>
+			</div>
+			<div class="fields">
+			Number of gazed donuts: <input onchange="updateOrder()" class="in" type="text" name="gazed" id="gazedDonut" value=""/><br>
+			</div>
+			<div class="fields">
+			Minute till pickup: <input class="in" type="text" name="time" id="time" value=""/><br>
+			</div>
+      <hr>
+      <div class="fields">
+			Subtotal <input class="in" type="text" name="subTotal" id="subTotal" value=""/><br>
+			</div>
+      <div class="fields">
+			Tax <input class="in" type="text" name="tax" id="tax" value=""/><br>
+			</div>
+      <div class="fields">
+			Total <input class="in" type="text" name="total" id="total" value=""/><br>
+			</div>
+      
+			<div class="fields">
+			<input type="button" class="submit" name="submit" value="Place Order" onclick="placeOrder()">
+			</div>
+		</form>
+    
+
+	</div>
+
+</html>

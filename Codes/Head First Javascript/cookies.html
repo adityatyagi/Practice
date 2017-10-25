@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>iRock</title>
+    <script type="text/javascript" src="cookies2.js"></script>
+    <script type="text/javascript" src="cookies.js"></script>
+    <script type="text/javascript">
+        function touchRock() {
+            if (userName) {
+                alert("I like the attention, " + userName + ". Thank You!");
+            } else {
+                userName = prompt("What is your username?", "Enter your username");
+                if (userName) {
+                    alert("It is good to meet you, " + userName);
+                    // write the username to a cookie
+                    // checking if the browser supports the cookies
+                    if (navigator.cookieEnabled) {
+                        writeCookie("irock_username", userName, 5);
+                    } else {
+                        alert("Your browser doesn't support cookies.");
+                    }
+
+
+                }
+            }
+
+            document.getElementById("image").src = "nosmile.png";
+            setTimeout("document.getElementById('image').src = 'smile.png';", 3000);
+        }
+
+
+
+        function resizeBlock() {
+            console.log(document.getElementById("image").height);
+            console.log(window.innerHeight);
+            document.getElementById("image").height = (window.innerHeight - 100) * 0.9;
+            console.log(document.getElementById("image").height);
+        }
+
+        function greetUser() {
+            //checking for the cookie support onload of the webpage
+            if (navigator.cookieEnabled) {
+                userName = readCookie("irock_username");
+            } else {
+                alert("Your browser doesn't support cookies.");
+                username = false;
+            }
+
+            if (userName) {
+                alert("Hello " + userName + ", I missed you!");
+            } else {
+                alert("I am your pet!");
+            }
+        }
+    </script>
+</head>
+
+<body onload="resizeBlock(); greetUser(); " onresize="resizeBlock();">
+    <div style="margin-top: 100px; text-align: center;">
+        <img id="image" src="nosmile.png" onclick="touchRock();">
+    </div>
+    <button onclick="alertCookie()">Show cookies</button>
+
+
+</body>
+
+</html>

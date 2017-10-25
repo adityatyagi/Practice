@@ -1,0 +1,15 @@
+{
+    "name": "inputchecker",
+    "version": "1.0.0",
+    "description": "Looks for and implements commands from input through console",
+    "main": "index.js",
+    "scripts": {
+        "test": "node test/test.js"
+    },
+    "keywords": [
+        "command",
+        "check"
+    ],
+    "author": "Aditya Tyagi",
+    "license": "ISC"
+}

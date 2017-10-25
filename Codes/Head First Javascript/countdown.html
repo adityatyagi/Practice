@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Countdown</title>
+    <script>
+        function start() {
+            var num = prompt("Enter a number greater than 0 and less than 10", "Enter Number");
+
+            if (num > 0) {
+                for (var i = num; i > 0; i--) {
+                    alert("Starting in " + i);
+                }
+                alert("Roll Film");
+            } else {
+                alert("the number is smaller than 0");
+            }
+        }
+
+        function watchMovie() {
+            var seats = ["a", "a", "u", "a", "a", "u", "a", "a", "a"];
+            var counter = 0;
+            for (var i = 0; i < seats.length; i++) {
+                if (seats[i] === "a") {
+                    counter++;
+                    if (counter === 3) {
+                        alert("3 seats available.");
+                    }
+
+                } else {
+                    counter = 0;
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <button onclick="start();">Click to start</button><br><br>
+    <button onclick="watchMovie();">Book Seats</button>
+</body>
+
+</html>

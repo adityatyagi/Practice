@@ -1,0 +1,16 @@
+https://scotch.io/search?q=promises
+https://scotch.io/tutorials/javascript-promises-for-dummies
+https://scotch.io/tutorials/understanding-javascript-promises-pt-i-background-basics
+https://scotch.io/@wesleylhandy/writing-your-own-javascript-promises
+
+-----------------
+location.reload() method to reload a webpage using a js
+to change the width and the height of the image, you have to change just one
+using js and the other will adjust accordingly
+
+document.getElementById("heelo").style.height = "100px";
+
+the width will change accordingly!
+
+initialise the variable value with the cookie value when the script starts and 
+then re-write the value of the variable back to the cookie.

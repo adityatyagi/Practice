@@ -1,0 +1,28 @@
+#heading {
+    text-align: center;
+}
+
+#form {
+    max-width: 800px;
+}
+
+form label {
+    float: left;
+}
+
+form input {
+    float: right;
+}
+
+form .form-group {
+    margin: 10px;
+    padding: 2px;
+}
+
+.help {
+    color: red;
+}
+
+.help-meesage {
+    float: right;
+}
